@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="Keywords" content="关键字">
+  <meta name='Author' content="will">
+  <meta name='Description' content="描述">
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1 user-scalable=no">
+  <title>Vue</title>
+  <style>
+    body,
+    p,
+    ul,
+    ol,
+    textarea {
+      margin: 0;
+      padding: 0;
+    }
+
+    body,
+    button,
+    input,
+    selet,
+    textarea {
+      font: 12px/1.5tahoma, arial, \5b8b\4f53
+    }
+
+    ul,
+    ol {
+      list-style: none
+    }
+
+    a {
+      text-decoration: none
+    }
+  </style>
+</head>
+
+<body>
+  <!-- 要在app作用域里用, 否则不显示 -->
+  <hd-nav></hd-nav>
+  <div id="app">
+    <hd-nav></hd-nav>
+  </div>
+  <script src='../vue.js'></script>
+  <script>
+    //声明全局组件
+    Vue.component()
+
+    let app = new Vue({
+      el: '#app',
+      components: {
+        hdNav: {
+          template: `<h2 style="color:skyblue">局部组件</h2>`
+        }
+      }
+    })
+  </script>
+</body>
+
+</html>

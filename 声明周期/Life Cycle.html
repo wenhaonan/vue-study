@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="Keywords" content="关键字">
+  <meta name='Author' content="will">
+  <meta name='Description' content="描述">
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1 user-scalable=no">
+  <title>Vue</title>
+  <style>
+    body,
+    p,
+    ul,
+    ol,
+    textarea {
+      margin: 0;
+      padding: 0;
+    }
+
+    body,
+    button,
+    input,
+    selet,
+    textarea {
+      font: 12px/1.5tahoma, arial, \5b8b\4f53
+    }
+
+    ul,
+    ol {
+      list-style: none
+    }
+
+    a {
+      text-decoration: none
+    }
+  </style>
+</head>
+
+<body>
+  <div id='app'>
+    <h1>{{msg}}</h1>
+    <h4>例如: dom加载之前, 加载完成后, 数据更新后</h4>
+    <hr>
+    <h3>{{num}}</h3>
+    <button @click="add">add</button>
+  </div>
+  <script src='../vue.js'></script>
+  <script>
+    let app = new Vue({
+      el: '#app',
+      data() {
+        return {
+          msg: 'Life Cycle',
+          num: 0
+        }
+      },
+      beforeCreate() {
+        console.log('1.beforeCreate 创建前状态===============》')
+      },
+      created() {
+        console.log('2.created 创建完毕状态===============》')
+
+      },
+      beforeMount() {
+        console.log('3.beforeMount 挂载前状态===============》')
+      },
+      mounted() {
+        console.log('4.mounted 挂载结束状态===============》')
+      },
+      beforeUpdate() {
+        console.log('5.beforeUpdate 更新前状态===============》')
+      },
+      updated() {
+        console.log('6.updated updated 更新完成状态===============》')
+      },
+      activated() {
+        console.log('7.activated keep-alive 组件激活状态===============》')
+      },
+      deactivated() {
+        console.log('8.deactivated keep-alive 组件停用时调用状态===============》')
+      },
+      beforeDestroy() {
+        console.log('9.beforeDestroy 销毁前状态===============》')
+      },
+      destroyed() {
+        console.log('10.destroyed 销毁完成状态===============》')
+      },
+      errorCaptured() {
+        console.log('11.errorCaptured')
+      },
+      methods: {
+        add() {
+          this.num++
+        }
+      }
+    })
+
+    //声明全局组件
+    // Vue.component(
+    //   //驼峰命名
+    //   'hdNav',
+    //   {
+    //     template: `<h2 style="color:skyblue">全局组件</h2>`
+    //   })
+  </script>
+</body>
+
+</html>

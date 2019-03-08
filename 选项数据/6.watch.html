@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="Keywords" content="关键字">
+  <meta name='Author' content="will">
+  <meta name='Description' content="描述">
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1 user-scalable=no">
+  <title>Vue</title>
+  <style>
+    body,
+    p,
+    ul,
+    ol,
+    textarea {
+      margin: 0;
+      padding: 0;
+    }
+
+    body,
+    button,
+    input,
+    selet,
+    textarea {
+      font: 12px/1.5tahoma, arial, \5b8b\4f53
+    }
+
+    ul,
+    ol {
+      list-style: none
+    }
+
+    a {
+      text-decoration: none
+    }
+  </style>
+</head>
+
+<body>
+  <div id='app'>
+    <h1>{{msg}}</h1>
+    <hr>
+    <h2>{{temperature}}</h2>
+    <h2>{{warn}}</h2>
+    <input type="button" value="add" @click="add">
+    <input type="button" value="reduce" @click="reduce">
+  </div>
+  <script src='../vue.js'></script>
+  <script>
+    let app = new Vue({
+      el: '#app',
+      data: {
+        msg: 'watch - 监控数据变化',
+        temperature: 28,
+        warn: '好舒服'
+      },
+      methods: {
+        add() {
+          this.temperature++
+        },
+        reduce() {
+          this.temperature--
+        }
+      },
+      watch: {
+        temperature(newValue, oldValue) {
+          //console.log(newValue, oldValue)
+          if (newValue > 30) {
+            this.warn = "热死啦"
+          } else if (newValue < 20) {
+            this.warn = "冷死啦"
+          }else{
+            this.warn = "好舒服"
+          }
+        }
+      },
+    })
+
+  </script>
+</body>
+
+</html>

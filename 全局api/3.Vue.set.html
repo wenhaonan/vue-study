@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="Keywords" content="关键字">
+  <meta name='Author' content="will">
+  <meta name='Description' content="描述">
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1 user-scalable=no">
+  <title>Vue</title>
+  <style>
+    body,
+    p,
+    ul,
+    ol,
+    textarea {
+      margin: 0;
+      padding: 0;
+    }
+
+    body,
+    button,
+    input,
+    selet,
+    textarea {
+      font: 12px/1.5tahoma, arial, \5b8b\4f53
+    }
+
+    ul,
+    ol {
+      list-style: none
+    }
+
+    a {
+      text-decoration: none
+    }
+  </style>
+</head>
+
+<body>
+  <div id="app">
+    <ul>
+      <li v-for="item in arr">{{item}}</li>
+    </ul>
+  </div>
+  <button onclick="add()">点击修改 arr 的数据</button>
+  <script src='../vue.js'></script>
+  <script>
+    let app = new Vue({
+      el: "#app",
+      data() {
+        return {
+          msg: "hello",
+          arr: ["a", "b", "c"]
+        }
+      }
+    })
+    function add() {
+      console.log(app.arr)
+      // app.arr[0] = 123
+      //设置属性,触发视图更新
+      Vue.set(app.arr, 0, 123)
+    }
+  </script>
+</body>
+
+</html>

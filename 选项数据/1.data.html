@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="Keywords" content="关键字">
+  <meta name='Author' content="will">
+  <meta name='Description' content="描述">
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1 user-scalable=no">
+  <title>Vue</title>
+  <style>
+    body,
+    p,
+    ul,
+    ol,
+    textarea {
+      margin: 0;
+      padding: 0;
+    }
+
+    body,
+    button,
+    input,
+    selet,
+    textarea {
+      font: 12px/1.5tahoma, arial, \5b8b\4f53
+    }
+
+    ul,
+    ol {
+      list-style: none
+    }
+
+    a {
+      text-decoration: none
+    }
+  </style>
+</head>
+
+<body>
+  <div id="app">
+    {{num}}
+    <br>
+    <input type="button" @click="add" value="add">
+  </div>
+  <script src='../vue.js'></script>
+  <script>
+    let vm = new Vue({
+      el: '#app',
+      //可以说对象
+      /* data: {
+        num: 123
+      } */
+      //可以是函数
+      //在自定义组件中, 只接受函数
+      data() {
+        return {
+          num: 124
+        }
+      },
+      methods:{
+        add(){
+          this.num++
+        }
+      }
+    })
+  </script>
+</body>
+
+</html>

@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="Keywords" content="关键字">
+  <meta name='Author' content="will">
+  <meta name='Description' content="描述">
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1 user-scalable=no">
+  <title>Vue</title>
+  <style>
+    body,
+    p,
+    ul,
+    ol,
+    textarea {
+      margin: 0;
+      padding: 0;
+    }
+
+    body,
+    button,
+    input,
+    selet,
+    textarea {
+      font: 12px/1.5tahoma, arial, \5b8b\4f53
+    }
+
+    ul,
+    ol {
+      list-style: none
+    }
+
+    a {
+      text-decoration: none
+    }
+  </style>
+</head>
+
+<body>
+  <div id="app">
+    <!-- 父组件 -->
+    <hd-nav :alt="msg" title="商品列表" main-title="主标题"></hd-nav>
+  </div>
+  <script src='../vue.js'></script>
+  <script>
+    /*
+    * 谁用谁就是父组件
+    *  谁被用就是子组件
+    *
+    */
+    let child = {
+      template: '<em> child 子组件 </em>'
+    }
+
+    let parent = {
+      template: `
+      <h2>
+        选项模板 - {{title}} - {{mainTitle}} - {{alt}} -
+        <child></child>
+      </h2>`,
+      //props 用于接收父组件的数据
+      props: ["title", "main-title", "alt"],
+      components: {
+        child
+      }
+    }
+
+    let app = new Vue({
+      el: "#app",
+      data: {
+        msg: "seo"
+      },
+      components: {
+        hdNav: parent
+      }
+    })
+  </script>
+</body>
+
+</html>

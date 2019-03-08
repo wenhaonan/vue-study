@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="Keywords" content="关键字">
+  <meta name='Author' content="will">
+  <meta name='Description' content="描述">
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1 user-scalable=no">
+  <title>Vue</title>
+  <style>
+    body,
+    p,
+    ul,
+    ol,
+    textarea {
+      margin: 0;
+      padding: 0;
+    }
+
+    body,
+    button,
+    input,
+    selet,
+    textarea {
+      font: 12px/1.5tahoma, arial, \5b8b\4f53
+    }
+
+    ul,
+    ol {
+      list-style: none
+    }
+
+    a {
+      text-decoration: none
+    }
+
+    .red {
+      margin-left: 50px;
+      background: red;
+      width: 200px;
+      height: 200px;
+      color: #fff;
+      line-height: 200px;
+      text-align: center
+    }
+
+    .blue {
+      margin-left: 50px;
+      background: blue;
+      width: 200px;
+      height: 200px;
+      color: #fff;
+      line-height: 200px;
+      text-align: center
+    }
+  </style>
+</head>
+
+<body>
+  <div id="app">
+    <h1 v-text="msg"></h1>
+    <hr>
+    <h2 v-bind:class="r"> 返回 r 的值 </h2>
+    <h2 :class="b"> 简写, 返回b的值 </h2>
+    <!-- 简写 -->
+    <h2 :class="{blue: isBlue}"> 接收判断条件,通过返回前面的字符串 </h2>
+    <h2 :class="{r,red}">{r:r, red:red}绑定对象</h2>
+    <h2 :class="[r,b]">绑定数组</h2>
+    <h2 :class="isTrue? 'red':'blue'">三元</h2>
+    <h2 :style="styleObj">绑定样式对象</h2>
+    <h2 :style="{color,border}">绑定单个样式</h2>
+  </div>
+  <script src='../vue.js'></script>
+  <script>
+    //v-bind 绑定属性
+    new Vue({
+      el: '#app',
+      data: {
+        msg: " v-bind", a: "hello world", b: "blue", isBlue: true, r: "red", red: true, isTrue: false,
+        styleObj: {
+          color: 'yellow',
+          border: '1px solid green'
+        },
+        color: '#f40',
+        border: '1px solid green'
+      }
+    }) </script>
+</body>
+
+</html>

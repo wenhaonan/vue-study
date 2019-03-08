@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="Keywords" content="关键字">
+  <meta name='Author' content="will">
+  <meta name='Description' content="描述">
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1 user-scalable=no">
+  <title>Vue</title>
+  <style>
+    body,
+    p,
+    ul,
+    ol,
+    textarea {
+      margin: 0;
+      padding: 0;
+    }
+
+    body,
+    button,
+    input,
+    selet,
+    textarea {
+      font: 12px/1.5tahoma, arial, \5b8b\4f53
+    }
+
+    ul,
+    ol {
+      list-style: none
+    }
+
+    a {
+      text-decoration: none
+    }
+  </style>
+</head>
+
+<body>
+  <div id='app'>
+    <h1>{{msg}}</h1>
+    <h2>{{price}}</h2>
+    <input type="button" value="在Vue的作用域下调用add函数" @click="add(5, $event)">
+    <input type="button" value="this指向" @click='This'>
+    <dream @click.native="add" title="在组件中调用add方法"></dream>
+  </div>
+
+  <button onclick="app.add(5,this)">在外部作用域下调用add函数</button>
+  <script src='../vue.js'></script>
+  <script>
+    let dream = {
+      template: "<h2><button>{{title}}</button></h2>",
+      props: ["title"]
+    }
+    let app = new Vue({
+      el: "#app",
+      data: {
+        msg: 'methods',
+        price: 199
+      },
+      methods: {
+        //既想传参又想获取点击事件对象, 第二个实参 用 $event 
+        add(n, e) {
+          //this 是 Vue 的对象实例
+          //this.price++
+          //this.price += n 
+          console.log(n, e)
+        },
+        This: () => {
+          //箭头函数 this 指向window
+          //一般不写箭头函数, 为了获取 Vue 实例
+          console.log(this)
+        }
+      },
+      components: {
+        dream
+      }
+    })
+  </script>
+</body>
+
+</html>

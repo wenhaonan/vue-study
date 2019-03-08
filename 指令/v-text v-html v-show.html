@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="Keywords" content="will">
+  <meta name='Description' content="will">
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1 user-scalable=no">
+  <title>Will</title>
+  <style>
+    body,
+    p,
+    ul,
+    ol,
+    textarea {
+      margin: 0;
+      padding: 0;
+    }
+
+    body,
+    button,
+    input,
+    selet,
+    textarea {
+      font: 12px/1.5tahoma, arial, \5b8b\4f53
+    }
+
+    ul,
+    ol {
+      list-style: none
+    }
+
+    a {
+      text-decoration: none
+    }
+  </style>
+</head>
+
+<body>
+  <div id="app">
+    <!-- 把数据插入到此作用域下 ， 需要用插值符号-->
+    {{msg}}
+    <h2 v-text='vText'></h2>
+    <h2 v-html='vHtml'></h2>
+    <h2 v-show='isShow'>{{vText}}</h2>
+    <!-- {{vText}} -->
+
+  </div>
+  <script src="../vue.js"></script>
+  <script>
+    new Vue({
+      el: "#app",
+      data: { //请求过来的原始数据都会放到这里  不要污染
+        msg: "helloWorld",
+        vText: '这是v-text 相当于innerText',
+        vHtml: '<h1>12123123</h1>',
+        isShow: true
+      }
+    });
+
+  </script>
+</body>
+
+</html>

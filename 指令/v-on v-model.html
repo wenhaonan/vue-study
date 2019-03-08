@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="Keywords" content="关键字">
+  <meta name='Author' content="will">
+  <meta name='Description' content="描述">
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1 user-scalable=no">
+  <title>Vue</title>
+  <style>
+    body,
+    p,
+    ul,
+    ol,
+    textarea {
+      margin: 0;
+      padding: 0;
+    }
+
+    body,
+    button,
+    input,
+    selet,
+    textarea {
+      font: 12px/1.5tahoma, arial, \5b8b\4f53
+    }
+
+    ul,
+    ol {
+      list-style: none
+    }
+
+    a {
+      text-decoration: none
+    }
+  </style>
+</head>
+
+<body>
+  <div id="app">
+    <h2 v-text="msg"></h2>
+    <hr>
+    <h1>得分:{{num}}</h1>
+    <button v-on:click="additon">分数加</button>
+    <button v-on:click="subtraction">分数减</button>
+    <hr>
+    <!-- <input v-on:keyup.enter="onEnter" value="键盘事件"></input> -->
+    <input v-model="num" v-on:keyup.13="onEnter" value="键盘事件"></input>
+    <hr>
+    <!-- 简写 -->
+    <button @click="additon">分数加</button>
+    <hr>
+
+    双向数据绑定: <em v-text="num"></em>
+  </div>
+  <script src='../vue.js'></script>
+  <script>
+    new Vue({
+      el: "#app",
+      data: {
+        msg: "helloWorld",
+        num: 0
+      },
+      methods: {
+        additon() {
+          this.num++
+        },
+        subtraction() {
+          this.num--
+        },
+        onEnter() {
+          this.num++
+        }
+      }
+    })
+  </script>
+</body>
+
+</html>

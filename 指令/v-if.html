@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="Keywords" content="will">
+  <meta name='Description' content="will">
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1 user-scalable=no">
+  <title>Will</title>
+  <style>
+    body,
+    p,
+    ul,
+    ol,
+    textarea {
+      margin: 0;
+      padding: 0;
+    }
+
+    body,
+    button,
+    input,
+    selet,
+    textarea {
+      font: 12px/1.5tahoma, arial, \5b8b\4f53
+    }
+
+    ul,
+    ol {
+      list-style: none
+    }
+
+    a {
+      text-decoration: none
+    }
+  </style>
+</head>
+
+<body>
+  <div id="app">
+    <!-- 移入和移除dom节点 为 false不存在页面上 -->
+    <div v-if="isLogin">你没有登录</div>
+    <!-- 上边不走， 自动走下边 -->
+    <div v-else="">你已经登陆了</div>
+  </div>
+  <script src="../vue.js"></script>
+  <script>
+    new Vue({
+      el: "#app",
+      data: {
+        isLogin: false
+      }
+    })
+  </script>
+</body>
+
+</html>

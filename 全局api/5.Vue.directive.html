@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="Keywords" content="关键字">
+  <meta name='Author' content="will">
+  <meta name='Description' content="描述">
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1 user-scalable=no">
+  <title>Vue</title>
+  <style>
+    body,
+    p,
+    ul,
+    ol,
+    textarea {
+      margin: 0;
+      padding: 0;
+    }
+
+    body,
+    button,
+    input,
+    selet,
+    textarea {
+      font: 12px/1.5tahoma, arial, \5b8b\4f53
+    }
+
+    ul,
+    ol {
+      list-style: none
+    }
+
+    a {
+      text-decoration: none
+    }
+  </style>
+</head>
+
+<body>
+  <!-- 
+    Vue.directive
+    注册或获取全局指令
+    自定义指令
+   -->
+  <div id="app">
+    <h1>{{msg}}</h1>
+    <h2 v-dream='nan'>这是自己定义的指令</h2>
+    <h2 v-haonan="wen">钩子函数{{num}}</h2>
+    <button @click="add">点击改变num</button>
+    <button onclick="unBind()">解绑</button>
+  </div>
+  <script src='../vue.js'></script>
+  <script>
+    function unBind() {
+      app.$destroy()
+    }
+
+    Vue.directive('dream', (el, bind) => {
+      //el: 调用指令的对象
+      //bind: 是一个对象 (指令名, 属性(nan)的值, ..)
+      // console.log(el, bind)
+      el.style = "color:" + bind.value
+    })
+    //钩子函数 :事件函数 事件触发时运行的函数
+    Vue.directive('haonan', {
+      bind(el, bind) {
+        console.log('1.被绑定')
+        el.style.color = bind.value
+      },
+      inserted() {
+        console.log('2.绑定到节点')
+      },
+      update() {
+        console.log('3.组件更新')
+      },
+      componentUpdated() {
+        console.log('4.组件更新完成')
+      },
+      unbind() {
+        console.log('5.解绑')
+      }
+    })
+    let app = new Vue({
+      el: "#app",
+      data: {
+        msg: 'Vue.directive',
+        nan: '#f40',
+        wen: 'blue',
+        num: 0
+      },
+      methods: {
+        add() {
+          this.num++
+        }
+      }
+    })
+  </script>
+</body>
+
+</html>

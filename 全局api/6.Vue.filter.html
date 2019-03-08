@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="Keywords" content="关键字">
+  <meta name='Author' content="will">
+  <meta name='Description' content="描述">
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1 user-scalable=no">
+  <title>Vue</title>
+  <style>
+    body,
+    p,
+    ul,
+    ol,
+    textarea {
+      margin: 0;
+      padding: 0;
+    }
+
+    body,
+    button,
+    input,
+    selet,
+    textarea {
+      font: 12px/1.5tahoma, arial, \5b8b\4f53
+    }
+
+    ul,
+    ol {
+      list-style: none
+    }
+
+    a {
+      text-decoration: none
+    }
+  </style>
+</head>
+
+<body>
+  <div id="app">
+    <h1>{{ msg }}</h1>
+    <h1>{{ text | myFilter }}</h1>
+    <input type="text" v-model="text">
+  </div>
+  <script src='../vue.js'></script>
+  <script>
+    //在选项中使用
+    let app = new Vue({
+      el: "#app",
+      data: {
+        msg: "Vue.filter 过滤器",
+        text: ""
+      }
+      // filters: {
+      //   myFilter(value) {
+      //     return value.split('').reverse().join('')
+      //   }
+      // }
+    })
+
+    // 在全局设置
+    let myfilter = Vue.filter('myFilter', v => '¥' + v)
+    //返回函数 v => ""+v
+    console.log(myfilter)
+  </script>
+</body>
+
+</html>

@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="Keywords" content="关键字">
+  <meta name='Author' content="will">
+  <meta name='Description' content="描述">
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1 user-scalable=no">
+  <title>Vue</title>
+  <style>
+    body,
+    p,
+    ul,
+    ol,
+    textarea {
+      margin: 0;
+      padding: 0;
+    }
+
+    body,
+    button,
+    input,
+    selet,
+    textarea {
+      font: 12px/1.5tahoma, arial, \5b8b\4f53
+    }
+
+    ul,
+    ol {
+      list-style: none
+    }
+
+    a {
+      text-decoration: none
+    }
+  </style>
+</head>
+
+<body>
+  <div id='app'>
+    <h1>{{msg}}</h1>
+    <h1>{{newPrice}}</h1>
+    <ul>
+      <li v-for="(item,index) in list" :key="index">
+        {{item.date}} : {{item.title}}
+      </li>
+    </ul>
+    <hr>
+    <ul>
+      <li v-for="(item,index) in newList" :key="index">{{item.date}} : {{item.title}}</li>
+    </ul>
+  </div>
+  <script src='../vue.js'></script>
+  <script>
+    new Vue({
+      el: '#app',
+      data: {
+        price: 99,
+        msg: 'computed',
+        // computed 主要作用是对原始数据,进行二次处理 
+        //例如: 类型转化 大小写 排序 拼接
+        list: [
+          {
+            title: '了深刻的空间大使馆见到过isdo',
+            date: '2018-4-4'
+          },
+          {
+            title: '死定了广阔的风格单联开关',
+            date: '2018-6-8'
+          },
+          {
+            title: '电风扇打了个卡第三个',
+            date: '2018-8-8'
+          }
+        ]
+      },
+      computed: {
+        newList() {
+          let newlist = [...this.list]
+          return newlist.reverse()
+        },
+        newPrice() {
+          return (this.price + "元")
+        }
+      }
+    })
+  </script>
+</body>
+
+</html>

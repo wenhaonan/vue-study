@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="Keywords" content="关键字">
+  <meta name='Author' content="will">
+  <meta name='Description' content="描述">
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1 user-scalable=no">
+  <title>Vue</title>
+  <style>
+    body,
+    p,
+    ul,
+    ol,
+    textarea {
+      margin: 0;
+      padding: 0;
+    }
+
+    body,
+    button,
+    input,
+    selet,
+    textarea {
+      font: 12px/1.5tahoma, arial, \5b8b\4f53
+    }
+
+    ul,
+    ol {
+      list-style: none
+    }
+
+    a {
+      text-decoration: none
+    }
+  </style>
+</head>
+
+<body>
+  <!-- 
+    Vue.extend 就是用来扩展组件的 
+    学Vue就是在不停的使用组件, 和写组件
+  -->
+  <abc></abc>
+  <div id="box"></div>
+  <script src='../vue.js'></script>
+  <script>
+    //构造函数
+    let extend = Vue.extend({
+      //只能放一个父节点
+      template: `<h1>
+        <a :href='url'>{{con}} - {{num}}</a>
+        </h1>`,
+      data() {
+        return {
+          con: 'extend',
+          url: "http://www.baidu.com"
+        }
+      },
+      props: ["num"]
+
+    });
+    //挂载到dream标签上
+    new extend({ propsData: { num: 123 } }).$mount("abc")
+    //挂载到id上
+    new extend({propsData: { num: 123 } }).$mount("#box")
+  </script>
+</body>
+
+</html>

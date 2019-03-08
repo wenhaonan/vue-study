@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="Keywords" content="will">
+  <meta name='Description' content="will">
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1 user-scalable=no">
+  <title>Will</title>
+  <style>
+    body,
+    p,
+    ul,
+    ol,
+    textarea {
+      margin: 0;
+      padding: 0;
+    }
+
+    body,
+    button,
+    input,
+    selet,
+    textarea {
+      font: 12px/1.5tahoma, arial, \5b8b\4f53
+    }
+
+    ul,
+    ol {
+      list-style: none
+    }
+
+    a {
+      text-decoration: none
+    }
+  </style>
+</head>
+
+<body>
+  <div id="app">
+    <ul>
+      <li v-for="item in arr">{{item}}</li>
+    </ul>
+    <hr>
+    <!-- 提升性能 -->
+    <ul>
+      <li v-for="(item,index) in sortArr" :key="index">{{item}}</li>
+    </ul>
+    <hr>
+    <ul>
+      <li v-for="(item, index) in users" :key="index">name:{{item.name}} age:{{item.age}}</li>
+    </ul>
+    <hr>
+    <ul>
+      <li v-for="(value,key,index) in username" :key="index">value:{{value}} key:{{key}} index:{{index}}</li>
+    </ul>
+    <hr>
+  </div>
+  <script src="../vue.js"></script>
+  <script>
+    console.time(1)
+    new Vue({
+      el: "#app",
+      data: {
+        //用的非常多
+        mag: "v-for",
+        arr: [1, 2, 3, 4, 5, 6, 7],
+        users: [
+          { name: "haonan", age: 19 },
+          { name: "xujun", age: 20 },
+          { name: "zhouwei", age: 21 }
+        ],
+        username: {
+          name: '浩南',
+          age: 18,
+          sex: '男'
+        }
+      },
+      //计算属性
+      computed: {
+        sortArr: function () {
+          let arr = [...this.arr]
+          return arr.sort((a, b) => b - a)
+        }
+      }
+    })
+    console.timeEnd(1)
+  </script>
+</body>
+
+</html>

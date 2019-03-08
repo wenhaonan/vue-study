@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="Keywords" content="关键字">
+  <meta name='Author' content="will">
+  <meta name='Description' content="描述">
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1 user-scalable=no">
+  <title>Vue</title>
+  <style>
+    body,
+    p,
+    ul,
+    ol,
+    textarea {
+      margin: 0;
+      padding: 0;
+    }
+
+    body,
+    button,
+    input,
+    selet,
+    textarea {
+      font: 12px/1.5tahoma, arial, \5b8b\4f53
+    }
+
+    ul,
+    ol {
+      list-style: none
+    }
+
+    a {
+      text-decoration: none
+    }
+  </style>
+</head>
+
+<body>
+  <div id='app'>
+    <h1>{{msg}}</h1>
+    <hi-dream>
+      <span slot="name">{{content.name}}</span>
+      <span slot="age">{{content.age}}</span>
+      <span slot="job">{{content.job}}</span>
+    </hi-dream>
+  </div>
+  <template id='tpl'>
+    <div>
+      <h1>名字:
+        <slot name="name"></slot>
+      </h1>
+      <h1>年龄:
+        <slot name="age"></slot>
+      </h1>
+      <h1>职业:
+        <slot name="job"></slot>
+      </h1>
+    </div>
+  </template>
+  <script src='../vue.js'></script>
+  <script>
+    let vm = new Vue({
+      el: '#app',
+      data: {
+        msg: 'slot 用于标记往哪个具名插槽中插入子组件的内容, 会在第三方组件上看到有',
+        content: {
+          name: 'haonan',
+          age: 18,
+          job: 'student'
+        }
+      },
+      components: {
+        'hi-dream': {
+          template: '#tpl'
+        }
+      }
+    })
+
+
+  </script>
+</body>
+
+</html>
